@@ -36,15 +36,24 @@ namespace BannerFlow.Services
         }
 
         // Return all entries logic
-        public IEnumerable<Banner> GetAll()
+        public IEnumerable<BannerDetailDTO> GetAll()
         {
-            return repository.GetAll();
+            List<BannerDetailDTO> value = new List<BannerDetailDTO>();
+            IEnumerable<Banner> banners = repository.GetAll();
+
+            foreach(Banner x in banners)
+            {
+                value.Add(new BannerDetailDTO(x));
+            }
+            return value;
         }
 
         // Return requested entry logic
-        public Banner Get(int id)
+        public BannerDetailDTO Get(int id)
         {
-            return repository.Get(id);
+            BannerDetailDTO value = new BannerDetailDTO(repository.Get(id));
+
+            return value;
         }
 
 

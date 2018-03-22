@@ -21,13 +21,13 @@ namespace BannerFlow.Controllers
         }
 
         // GET api/Banner
-        public IEnumerable<Banner> Get()
+        public IEnumerable<BannerDetailDTO> Get()
         {
             return bannerService.GetAll();
         }
 
         // GET api/Banners/int
-        public Banner Get(int id)
+        public BannerDetailDTO Get(int id)
         {
             var banner = bannerService.Get(id);
             if (banner == null)
