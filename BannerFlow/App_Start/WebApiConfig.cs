@@ -19,6 +19,12 @@ namespace BannerFlow
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "BannerApi",
+                routeTemplate: "api/banners/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

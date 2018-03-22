@@ -73,5 +73,15 @@ namespace BannerFlow.Services
         {
             repository.Delete(id);
         }
+
+        // Returns an HTML of a specified banner
+        public BannerDTO GetHtml(int id)
+        {
+            Banner banner = repository.Get(id);
+            BannerDTO value = new BannerDTO();
+            value.Html = banner.Html;
+
+            return value;
+        }
     }
 }

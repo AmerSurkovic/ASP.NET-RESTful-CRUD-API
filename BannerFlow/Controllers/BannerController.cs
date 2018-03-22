@@ -8,9 +8,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace BannerFlow.Controllers
 {
+
+    [RoutePrefix("api/banners")]
     public class BannerController : ApiController
     {
         private static BannerService bannerService;
@@ -20,13 +23,16 @@ namespace BannerFlow.Controllers
             bannerService = new BannerService();
         }
 
-        // GET api/Banner
+        // GET api/banners
+        [Route("")]
+        [HttpGet]
         public IEnumerable<BannerDetailDTO> Get()
         {
             return bannerService.GetAll();
         }
 
-        // GET api/Banners/int
+        // GET api/banners/{id}
+        [Route("{id:int}")]
         public BannerDetailDTO Get(int id)
         {
             var banner = bannerService.Get(id);
@@ -37,8 +43,9 @@ namespace BannerFlow.Controllers
             return banner;
         }
 
-
-        // POST api/Banner
+        // POST api/banners
+        [Route("")]
+        [HttpPost]
         public HttpResponseMessage Post(BannerDTO value)
         {
             HttpResponseMessage result = null;
@@ -49,7 +56,7 @@ namespace BannerFlow.Controllers
                 {
                     var banner = bannerService.Add(value);
                     result = Request.CreateResponse<Banner>(HttpStatusCode.OK, banner);
-                    string newItemURL = Url.Link("DefaultApi", new { id = banner.Id });
+                    string newItemURL = Url.Link("BannerApi", new { id = banner.Id });
                     result.Headers.Location = new Uri(newItemURL);
                 }
                 catch(Exception ex)
@@ -65,7 +72,10 @@ namespace BannerFlow.Controllers
             return result;
         }
 
-        // PUT api/banner/int
+
+        // PUT api/banners?id={id}
+        [Route("")]
+        [HttpPut]
         public HttpResponseMessage Put(int id, BannerDTO value)
         {
             HttpResponseMessage result = null;
@@ -91,6 +101,9 @@ namespace BannerFlow.Controllers
 
         }
 
+        // DELETE api/banners? id = { id }
+        [Route("")]
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             HttpResponseMessage result = null;
@@ -107,6 +120,19 @@ namespace BannerFlow.Controllers
             }
 
             return result;
+        }
+
+        // GET api/banners/{id}/html
+        [Route("{id:int}/html")]
+        [ResponseType(typeof(BannerDTO))]
+        public BannerDTO GetHtml(int id)
+        {
+            var banner = bannerService.GetHtml(id);
+            if (banner == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return banner;
         }
     }
 }
