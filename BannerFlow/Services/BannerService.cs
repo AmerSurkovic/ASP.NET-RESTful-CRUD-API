@@ -28,7 +28,7 @@ namespace BannerFlow.Services
             input.Created = DateTime.Now;
             input.Modified = DateTime.Now;
             input.Id = key++;
-            input.Html = data.Html;
+            input.Html = HttpUtility.HtmlEncode(data.Html);
 
             repository.Add(input);
 
@@ -61,7 +61,7 @@ namespace BannerFlow.Services
         public Banner Put(int id, BannerDTO value)
         {
             Banner update = repository.Get(id);
-            update.Html = value.Html;
+            update.Html = HttpUtility.HtmlEncode(value.Html);
             update.Modified = DateTime.Now;
 
             repository.Update(id, update);
@@ -79,7 +79,7 @@ namespace BannerFlow.Services
         {
             Banner banner = repository.Get(id);
             BannerDTO value = new BannerDTO();
-            value.Html = banner.Html;
+            value.Html = HttpUtility.HtmlDecode(banner.Html);
 
             return value;
         }
