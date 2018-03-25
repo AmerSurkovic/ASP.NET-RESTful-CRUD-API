@@ -60,7 +60,7 @@ namespace BannerFlow.Controllers
                     string newItemURL = Url.Link("BannerApi", new { id = banner.Id });
                     result.Headers.Location = new Uri(newItemURL);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Trace.TraceError(ex.Message, ex);
                     result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
@@ -74,7 +74,7 @@ namespace BannerFlow.Controllers
         }
 
 
-        // PUT api/banners?id={id}
+        // PUT api/banners/id
         [Route("{id:int}")]
         [HttpPut]
         public HttpResponseMessage Put(int id, BannerDTO value)
@@ -88,7 +88,7 @@ namespace BannerFlow.Controllers
                     Banner update = bannerService.Put(id, value);
                     result = Request.CreateResponse(HttpStatusCode.Accepted, update);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Trace.TraceError(ex.Message, ex);
                     result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
@@ -102,7 +102,7 @@ namespace BannerFlow.Controllers
 
         }
 
-        // DELETE api/banners? id = { id }
+        // DELETE api/banners/id
         [Route("{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
@@ -114,7 +114,7 @@ namespace BannerFlow.Controllers
                 bannerService.Delete(id);
                 result = Request.CreateResponse(HttpStatusCode.Accepted, "Entry was deleted.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Trace.TraceError(ex.Message, ex);
                 result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
@@ -125,7 +125,18 @@ namespace BannerFlow.Controllers
 
         // GET api/banners/{id}/html
         [Route("{id:int}/html")]
-        [ResponseType(typeof(BannerDTO))]
+        public HttpResponseMessage GetHtml(int id)
+        {
+            var banner = bannerService.GetHtml(id);
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new StringContent(banner.Html);
+            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/plain");
+            return response;
+        }
+
+        /*
+         * This implementation of <GetHtml> returns HTML parameter of a Banner object through JSON.
+         * I opted for the other one because it is easier to load the HTML immediately. 
         public BannerDTO GetHtml(int id)
         {
             var banner = bannerService.GetHtml(id);
@@ -134,6 +145,6 @@ namespace BannerFlow.Controllers
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             return banner;
-        }
+        }*/
     }
 }
