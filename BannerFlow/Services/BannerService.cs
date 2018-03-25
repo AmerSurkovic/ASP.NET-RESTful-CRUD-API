@@ -1,5 +1,6 @@
 ﻿using BannerFlow.Models;
 using BannerFlow.Repositories;
+using BannerFlow.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,11 @@ namespace BannerFlow.Services
         // Add an entry logic
         public Banner Add(BannerDTO data)
         {
+            if (!HtmlValidator.Validate(data.Html))
+            {
+                throw new Exception("HTML markup is not valid.");
+            }
+
             Banner input = new Banner();
             input.Created = DateTime.Now;
             input.Modified = DateTime.Now;
@@ -58,10 +64,15 @@ namespace BannerFlow.Services
 
 
         // Edit an entry logic
-        public Banner Put(int id, BannerDTO value)
+        public Banner Put(int id, BannerDTO data)
         {
+            if (!HtmlValidator.Validate(data.Html))
+            {
+                throw new Exception("HTML markup is not valid.");
+            }
+
             Banner update = repository.Get(id);
-            update.Html = HttpUtility.HtmlDecode(value.Html);
+            update.Html = HttpUtility.HtmlDecode(data.Html);
             update.Modified = DateTime.Now;
 
             repository.Update(id, update);
