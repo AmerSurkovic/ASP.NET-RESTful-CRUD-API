@@ -33,6 +33,7 @@ namespace BannerFlow.Controllers
 
         // GET api/banners/{id}
         [Route("{id:int}")]
+        [HttpGet]
         public BannerDetailDTO Get(int id)
         {
             var banner = bannerService.Get(id);
@@ -74,7 +75,7 @@ namespace BannerFlow.Controllers
 
 
         // PUT api/banners?id={id}
-        [Route("")]
+        [Route("{id:int}")]
         [HttpPut]
         public HttpResponseMessage Put(int id, BannerDTO value)
         {
@@ -102,7 +103,7 @@ namespace BannerFlow.Controllers
         }
 
         // DELETE api/banners? id = { id }
-        [Route("")]
+        [Route("{id:int}")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
