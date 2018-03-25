@@ -14,7 +14,7 @@ Project implements RESTful CRUD web API in C# using ASP.NET for managing a banne
 
   [IBannerRepository](BannerFlow/Repositories/IBannerRepository.cs)
   
-  [BannerRepository](BannerFlow/Repositores/BannerRepository.cs)
+  [BannerRepository](BannerFlow/Repositories/BannerRepository.cs)
 * **Models**
 
   [Banner](BannerFlow/Models/Banner.cs)
