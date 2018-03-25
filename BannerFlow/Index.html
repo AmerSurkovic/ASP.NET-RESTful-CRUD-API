@@ -9,21 +9,47 @@
 </head>
 <body>
     <div>
-        <h2>All banners</h2>
+        <h3>All banners</h3>
         <ul id="banners" />
     </div>
     <div>
-        <h2>Search by ID</h2>
+        <h3>Search for a banner</h3>
+        Banner ID:
         <input type="text" id="bannerID" size="5" />
         <input type="button" value="Search" onclick="find();" />
         <p id="banner" />
     </div>
 
     <div>
-        <h2>Load HTML of a banner</h2>
+        <h3>Add a banner</h3>
+        Banner HTML: 
+        <input type="text" id="bannerAdd_text" size="20"/>
+        <input type="button" value="Add" onclick="addBanner();"/>
+    </div>
+
+    <div>
+        <h3>Load HTML of a banner</h3>
+        Banner ID:
         <input type="text" id="bannerID_html" size="5" />
-        <input type="button" value="Search" onclick="loadHtml();"/>
-        <p id="loadHtml"/>
+        <input type="button" value="Load" onclick="injectHtml();"/>
+        <p id="load_html"/>
+    </div>
+
+    <div>
+        <h3>Edit a banner</h3>
+        Banner ID:
+        <input type="text" id="bannerEdit_id" size="5"/>
+        <br />
+        Banner HTML update:
+        <input type="text" id="bannerEdit_text" size="20"/>
+        <input type="button" value="Edit" onclick="editBanner();"/>
+    </div>
+
+    <div>
+        <h3>Delete a banner</h3>
+        Banner ID:
+        <input type="text" id="bannerDelete_id" size="5"/>
+        <input type="button" value="Delete" onclick="deleteBanner();" />
     </div>
 
 </body>

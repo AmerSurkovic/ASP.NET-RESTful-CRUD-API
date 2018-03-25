@@ -28,7 +28,14 @@ namespace BannerFlow.Controllers
         [HttpGet]
         public IEnumerable<BannerDetailDTO> Get()
         {
-            return bannerService.GetAll();
+            try
+            {
+                return bannerService.GetAll();
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
         }
 
         // GET api/banners/{id}
@@ -36,12 +43,16 @@ namespace BannerFlow.Controllers
         [HttpGet]
         public BannerDetailDTO Get(int id)
         {
-            var banner = bannerService.Get(id);
-            if (banner == null)
+            try
+            {
+                var banner = bannerService.Get(id);
+                return banner;
+            }
+            catch
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return banner;
+            
         }
 
         // POST api/banners
@@ -127,11 +138,17 @@ namespace BannerFlow.Controllers
         [Route("{id:int}/html")]
         public HttpResponseMessage GetHtml(int id)
         {
-            var banner = bannerService.GetHtml(id);
-            var response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Content = new StringContent(banner.Html);
-            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/plain");
-            return response;
+            try { 
+                var banner = bannerService.GetHtml(id);
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(banner.Html);
+                response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/plain");
+                return response;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
         }
 
         /*
