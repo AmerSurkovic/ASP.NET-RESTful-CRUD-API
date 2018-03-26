@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "b228039e-78b1-468e-86fa-115f6e376a34",
+		"name": "Banners API",
+		"description": "Testing Banners REST API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL /api/banners",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Html\": \"<h1>Change in change.</h1>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:52131/api/banners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners"
+					]
+				},
+				"description": "Get all banners"
+			},
+			"response": []
+		},
+		{
+			"name": "POST BANNER /api/banners",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Html\": \"<h3>Html in header 3.</h3>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:52131/api/banners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners"
+					]
+				},
+				"description": "Adding a new banner."
+			},
+			"response": []
+		},
+		{
+			"name": "POST BANNER 500 /api/banners",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Error\": \"<h1>Html in header 1.</h1>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:52131/api/banners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners"
+					]
+				},
+				"description": "Posting error banner with invalid HTML parameter."
+			},
+			"response": []
+		},
+		{
+			"name": "GET BANNER /api/banners/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1"
+					]
+				},
+				"description": "Get a single banner."
+			},
+			"response": []
+		},
+		{
+			"name": "GET BANNER 404 /api/banners/1000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1000"
+					]
+				},
+				"description": "Banner not found."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT BANNER 200 /api/banners/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Html\": \"<h1>Change in banner.</h1>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1"
+					]
+				},
+				"description": "Change of banner."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT BANNER 500 /api/banners/1000",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Html\": \"<h1>Change in banner.</h1>\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1000"
+					]
+				},
+				"description": "Error change in banner."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE BANNER 200 /api/banners/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"2"
+					]
+				},
+				"description": "Deleting a banner in the database."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE BANNER 500 /api/banners/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1000"
+					]
+				},
+				"description": "Deleting a banner in the database."
+			},
+			"response": []
+		},
+		{
+			"name": "GET BANNER HTML 200 /api/banner/1/html",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1/html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1",
+						"html"
+					]
+				},
+				"description": "Get the html from banner."
+			},
+			"response": []
+		},
+		{
+			"name": "GET BANNER HTML 404 /api/banner/1000/html",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:52131/api/banners/1000/html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52131",
+					"path": [
+						"api",
+						"banners",
+						"1000",
+						"html"
+					]
+				},
+				"description": "Get the html from banner."
+			},
+			"response": []
+		}
+	]
+}
