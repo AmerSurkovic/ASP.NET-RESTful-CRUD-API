@@ -21,5 +21,9 @@ namespace BannerFlow.DataTransferObjects
             this.Modified = banner.Modified;
         }
 
+        public BannerDTO()
+        {
+
+        }
     }
 }

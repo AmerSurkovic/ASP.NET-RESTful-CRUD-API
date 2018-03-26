@@ -24,7 +24,7 @@ namespace BannerFlow.Services
         }
 
         // Add an entry logic
-        public Banner Add(BannerHtmlDTO data)
+        public Banner Add(BannerDTO data)
         {
             if (!HtmlValidator.Validate(data.Html))
             {
@@ -65,7 +65,7 @@ namespace BannerFlow.Services
 
 
         // Edit an entry logic
-        public Banner Update(int id, BannerHtmlDTO data)
+        public Banner Update(int id, BannerDTO data)
         {
             if (!HtmlValidator.Validate(data.Html))
             {
@@ -103,10 +103,10 @@ namespace BannerFlow.Services
         }
 
         // Returns an HTML of a specified banner
-        public BannerHtmlDTO GetHtml(int id)
+        public BannerDTO GetHtml(int id)
         {
             Banner banner = repository.Get(id);
-            BannerHtmlDTO value = new BannerHtmlDTO();
+            BannerDTO value = new BannerDTO();
             value.Html = HttpUtility.HtmlDecode(banner.Html);
 
             return value;

@@ -58,7 +58,7 @@ namespace BannerFlow.Controllers
         // POST api/banners
         [Route("")]
         [HttpPost]
-        public HttpResponseMessage Post(BannerHtmlDTO value)
+        public HttpResponseMessage Post(BannerDTO value)
         {
             HttpResponseMessage result = null;
 
@@ -78,11 +78,10 @@ namespace BannerFlow.Controllers
             return result;
         }
 
-
         // PUT api/banners/id
         [Route("{id:int}")]
         [HttpPut]
-        public HttpResponseMessage Update(int id, BannerHtmlDTO value)
+        public HttpResponseMessage Update(int id, BannerDTO value)
         {
             HttpResponseMessage result = null;
 
