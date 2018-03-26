@@ -73,6 +73,10 @@ namespace BannerFlow.Services
             }
 
             Banner update = repository.Get(id);
+            if (update == null)
+            {
+                throw new Exception("Banner with the provided ID does not exist.");
+            }
             update.Html = HttpUtility.HtmlDecode(data.Html);
             update.Modified = DateTime.Now;
 
@@ -83,7 +87,19 @@ namespace BannerFlow.Services
         // Delete an entry logic
         public void Delete(int id)
         {
-            repository.Delete(id);
+            try
+            {
+                Banner find = repository.Get(id);
+                if(find == null)
+                {
+                    throw new Exception("Banner with the provided ID does not exist.");
+                }
+                repository.Delete(id);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // Returns an HTML of a specified banner
