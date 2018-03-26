@@ -16,6 +16,7 @@
                     });
                 });
         }
+
         // Function to find a banner with set ID
         function find() {
             var id = $('#bannerID').val();
@@ -62,7 +63,6 @@
                 data: sendInfo
             });
         }
-
 
         // Editing a banner
         function editBanner() {
