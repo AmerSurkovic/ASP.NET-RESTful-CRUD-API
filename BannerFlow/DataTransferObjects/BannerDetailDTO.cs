@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BannerFlow.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BannerFlow.Models
+namespace BannerFlow.DataTransferObjects
 {
     public class BannerDetailDTO
     {
@@ -19,5 +20,6 @@ namespace BannerFlow.Models
             this.Created = banner.Created;
             this.Modified = banner.Modified;
         }
+
     }
 }

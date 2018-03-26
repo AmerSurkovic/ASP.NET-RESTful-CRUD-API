@@ -210,12 +210,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Banner.cs" />
-    <Compile Include="Models\BannerDetailDTO.cs" />
-    <Compile Include="Models\BannerDTO.cs" />
+    <Compile Include="DataTransferObjects\BannerDetailDTO.cs" />
+    <Compile Include="DataTransferObjects\BannerDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BannerRepository.cs" />
     <Compile Include="Repositories\IBannerRepository.cs" />
     <Compile Include="Services\BannerService.cs" />
+    <Compile Include="Services\IBannerService.cs" />
     <Compile Include="Validators\HtmlValidator.cs" />
   </ItemGroup>
   <ItemGroup>

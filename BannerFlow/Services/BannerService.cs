@@ -1,4 +1,5 @@
-﻿using BannerFlow.Models;
+﻿using BannerFlow.DataTransferObjects;
+using BannerFlow.Models;
 using BannerFlow.Repositories;
 using BannerFlow.Validators;
 using System;
@@ -8,7 +9,7 @@ using System.Web;
 
 namespace BannerFlow.Services
 {
-    public class BannerService
+    public class BannerService : IBannerService
     {
         private static IBannerRepository repository;
 
@@ -64,7 +65,7 @@ namespace BannerFlow.Services
 
 
         // Edit an entry logic
-        public Banner Put(int id, BannerDTO data)
+        public Banner Update(int id, BannerDTO data)
         {
             if (!HtmlValidator.Validate(data.Html))
             {

@@ -1,5 +1,5 @@
-﻿using BannerFlow.Models;
-using BannerFlow.Repositories;
+﻿using BannerFlow.DataTransferObjects;
+using BannerFlow.Models;
 using BannerFlow.Services;
 using System;
 using System.Collections.Generic;
@@ -62,25 +62,19 @@ namespace BannerFlow.Controllers
         {
             HttpResponseMessage result = null;
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    var banner = bannerService.Add(value);
-                    result = Request.CreateResponse<Banner>(HttpStatusCode.OK, banner);
-                    string newItemURL = Url.Link("BannerApi", new { id = banner.Id });
-                    result.Headers.Location = new Uri(newItemURL);
-                }
-                catch (Exception ex)
-                {
-                    Trace.TraceError(ex.Message, ex);
-                    result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
-                }
+                var banner = bannerService.Add(value);
+                result = Request.CreateResponse<Banner>(HttpStatusCode.OK, banner);
+                string newItemURL = Url.Link("BannerApi", new { id = banner.Id });
+                result.Headers.Location = new Uri(newItemURL);
             }
-            else
+            catch (Exception ex)
             {
-                result = Request.CreateResponse<string>(HttpStatusCode.BadRequest, "State not valid!");
+                Trace.TraceError(ex.Message, ex);
+                result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
             }
+
             return result;
         }
 
@@ -88,27 +82,21 @@ namespace BannerFlow.Controllers
         // PUT api/banners/id
         [Route("{id:int}")]
         [HttpPut]
-        public HttpResponseMessage Put(int id, BannerDTO value)
+        public HttpResponseMessage Update(int id, BannerDTO value)
         {
             HttpResponseMessage result = null;
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    Banner update = bannerService.Put(id, value);
-                    result = Request.CreateResponse(HttpStatusCode.Accepted, update);
-                }
-                catch (Exception ex)
-                {
-                    Trace.TraceError(ex.Message, ex);
-                    result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
-                }
+                Banner update = bannerService.Update(id, value);
+                result = Request.CreateResponse(HttpStatusCode.OK, update);
             }
-            else
+            catch (Exception ex)
             {
-                result = Request.CreateResponse<string>(HttpStatusCode.BadRequest, "State not valid!");
+                Trace.TraceError(ex.Message, ex);
+                result = Request.CreateResponse<string>(HttpStatusCode.InternalServerError, ex.Message);
             }
+
             return result;
 
         }
@@ -123,7 +111,7 @@ namespace BannerFlow.Controllers
             try
             {
                 bannerService.Delete(id);
-                result = Request.CreateResponse(HttpStatusCode.Accepted, "Entry was deleted.");
+                result = Request.CreateResponse(HttpStatusCode.OK, "Entry was deleted.");
             }
             catch (Exception ex)
             {
@@ -151,17 +139,5 @@ namespace BannerFlow.Controllers
             }
         }
 
-        /*
-         * This implementation of <GetHtml> returns HTML parameter of a Banner object through JSON.
-         * I opted for the other one because it is easier to load the HTML immediately. 
-        public BannerDTO GetHtml(int id)
-        {
-            var banner = bannerService.GetHtml(id);
-            if (banner == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
-            return banner;
-        }*/
     }
 }
