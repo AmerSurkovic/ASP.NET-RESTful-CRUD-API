@@ -68,7 +68,7 @@ Testing was done using both:
  ![alt text](Postman%20API%20testing/Test%20calls%20screenshots/Post_500.png)
  
 * **POST BANNER NOT VALID HTML /api/banners : Status code 500**
- ![alt text](Postman%20API%20testing/Test%20calls%20screenshots/NonValidHtml.png)
+ ![alt text](Postman%20API%20testing/Test%20calls%20screenshots/NonValidHTML.png)
  
 * **GET BANNER /api/banners/1 : Status code 200**
  ![alt text](Postman%20API%20testing/Test%20calls%20screenshots/GetBanner_200.png)
