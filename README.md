@@ -22,7 +22,7 @@ Project implements RESTful CRUD web API in C# using ASP.NET for managing a banne
   
   [BannerDTO](BannerFlow/DataTransferObjects/BannerDTO.cs)
   
-  [BannerDetailDTO](BannerFlow/DataTransferObjects/BannerDetailDTO.cs)
+  [BannerHtmlDTO](BannerFlow/DataTransferObjects/BannerHtmlDTO.cs)
 * **Validators**
 
   [HtmlValidator](BannerFlow/Validators/HtmlValidator.cs)
