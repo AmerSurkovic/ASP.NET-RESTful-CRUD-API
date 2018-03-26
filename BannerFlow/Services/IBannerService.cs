@@ -10,10 +10,10 @@ namespace BannerFlow.Services
 {
     public interface IBannerService
     {
-        Banner Add(BannerDTO data);
-        IEnumerable<BannerDetailDTO> GetAll();
-        BannerDetailDTO Get(int id);
-        Banner Update(int id, BannerDTO data);
+        Banner Add(BannerHtmlDTO data);
+        IEnumerable<BannerDTO> GetAll();
+        BannerDTO Get(int id);
+        Banner Update(int id, BannerHtmlDTO data);
         void Delete(int id);
     }
 }

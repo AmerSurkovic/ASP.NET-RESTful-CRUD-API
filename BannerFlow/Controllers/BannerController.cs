@@ -26,7 +26,7 @@ namespace BannerFlow.Controllers
         // GET api/banners
         [Route("")]
         [HttpGet]
-        public IEnumerable<BannerDetailDTO> Get()
+        public IEnumerable<BannerDTO> Get()
         {
             try
             {
@@ -41,7 +41,7 @@ namespace BannerFlow.Controllers
         // GET api/banners/{id}
         [Route("{id:int}")]
         [HttpGet]
-        public BannerDetailDTO Get(int id)
+        public BannerDTO Get(int id)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace BannerFlow.Controllers
         // POST api/banners
         [Route("")]
         [HttpPost]
-        public HttpResponseMessage Post(BannerDTO value)
+        public HttpResponseMessage Post(BannerHtmlDTO value)
         {
             HttpResponseMessage result = null;
 
@@ -82,7 +82,7 @@ namespace BannerFlow.Controllers
         // PUT api/banners/id
         [Route("{id:int}")]
         [HttpPut]
-        public HttpResponseMessage Update(int id, BannerDTO value)
+        public HttpResponseMessage Update(int id, BannerHtmlDTO value)
         {
             HttpResponseMessage result = null;
 

@@ -210,8 +210,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Banner.cs" />
-    <Compile Include="DataTransferObjects\BannerDetailDTO.cs" />
     <Compile Include="DataTransferObjects\BannerDTO.cs" />
+    <Compile Include="DataTransferObjects\BannerHtmlDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BannerRepository.cs" />
     <Compile Include="Repositories\IBannerRepository.cs" />

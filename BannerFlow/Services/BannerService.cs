@@ -24,7 +24,7 @@ namespace BannerFlow.Services
         }
 
         // Add an entry logic
-        public Banner Add(BannerDTO data)
+        public Banner Add(BannerHtmlDTO data)
         {
             if (!HtmlValidator.Validate(data.Html))
             {
@@ -43,29 +43,29 @@ namespace BannerFlow.Services
         }
 
         // Return all entries logic
-        public IEnumerable<BannerDetailDTO> GetAll()
+        public IEnumerable<BannerDTO> GetAll()
         {
-            List<BannerDetailDTO> value = new List<BannerDetailDTO>();
+            List<BannerDTO> value = new List<BannerDTO>();
             IEnumerable<Banner> banners = repository.GetAll();
 
             foreach(Banner x in banners)
             {
-                value.Add(new BannerDetailDTO(x));
+                value.Add(new BannerDTO(x));
             }
             return value;
         }
 
         // Return requested entry logic
-        public BannerDetailDTO Get(int id)
+        public BannerDTO Get(int id)
         {
-            BannerDetailDTO value = new BannerDetailDTO(repository.Get(id));
+            BannerDTO value = new BannerDTO(repository.Get(id));
 
             return value;
         }
 
 
         // Edit an entry logic
-        public Banner Update(int id, BannerDTO data)
+        public Banner Update(int id, BannerHtmlDTO data)
         {
             if (!HtmlValidator.Validate(data.Html))
             {
@@ -87,10 +87,10 @@ namespace BannerFlow.Services
         }
 
         // Returns an HTML of a specified banner
-        public BannerDTO GetHtml(int id)
+        public BannerHtmlDTO GetHtml(int id)
         {
             Banner banner = repository.Get(id);
-            BannerDTO value = new BannerDTO();
+            BannerHtmlDTO value = new BannerHtmlDTO();
             value.Html = HttpUtility.HtmlDecode(banner.Html);
 
             return value;
