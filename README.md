@@ -54,6 +54,7 @@ Testing was done using both:
   Used for testing all of the API calls. Provides a better insight to illegal calls and for observing error handling.
 * [Developed client](BannerFlow/Index.html)
 
+  Also used for testing of the API calls but with focus on proper loading of HTML into the modern web browser.
 
  ### Postman API Test Results
 * **GET ALL /api/banners with an empty database**
