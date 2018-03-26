@@ -91,3 +91,26 @@ Testing was done using both:
  
 * **GET BANNER HTML /api/banners/1000/html : Status code 404**
  ![alt text](Postman%20API%20testing/Test%20calls%20screenshots/GetHtml_404.png) 
+
+## Testing with the client
+Developed client uses all of the CRUD API calls including **HTML loading for a given banner**. Since the CRUD API calls are tested and presented using Postman they will be not be shown again on the client side. **More important aspect is tested through client - and that is correct rendering of HTML when called through the API for the specified bannner.**
+
+* **Client side overview**
+
+  ![alt text](Client%20API%20tests/Application.png)
+  
+* **Load HTML 1**
+
+  ![alt text](Client%20API%20tests/LoadHtml1.png)
+  
+* **Load HTML 2**
+
+  ![alt text](Client%20API%20tests/LoadHtml2.png)
+  
+* **Load HTML 3**
+
+  ![alt text](Client%20API%20tests/LoadHtml3.png)
+  
+* **Load HTML 4**
+
+  ![alt text](Client%20API%20tests/LoadHtml4.png)
